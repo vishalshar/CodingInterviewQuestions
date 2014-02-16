@@ -1,6 +1,5 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * Given a string 'aabbcdccefff', find the first Non-duplicate character i.e. 'd'
  */
 package javaapplication;
 
