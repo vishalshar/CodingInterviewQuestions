@@ -1,0 +1,54 @@
+/*
+Given historical data for the stocks of a company for say 8 day. you can buy and sell the stocks just once. Find the maximum profit you can make: 
+
+Day	1	2	3	4	5	6	7	8 
+5	9	6	2	4	8	3	1
+ */
+package Numbers;
+
+/**
+ *
+ * @author Vishal
+ */
+public class MaximumProfit {
+
+    public static void main(String args[]) {
+        int arr[] = {5, 9, 10, 12, 3, 2, 14, 18,1};
+        maxProfit(arr);
+    }
+
+    public static void maxProfit(int arr[]) {
+        if (arr.length <= 1) {
+            return;
+        }
+
+        int min = arr[0];
+        int iMin = arr[0];
+        int minIndex = 0;
+        int max = arr[0];
+        int iMax = arr[0];
+        int tempMax = 0;
+        int maxIndex = 0;
+
+        for (int i = 1; i < arr.length; i++) {
+            if ((max-min) < (arr[i]-min) && minIndex < i) {
+                max = arr[i];
+                maxIndex = i;
+                if(tempMax<(max-min))
+                {
+                    iMin = min;
+                    iMax = max;
+                    tempMax = max-min;
+                }
+                continue;
+            }
+            if (min > arr[i]) {
+                min = arr[i];
+                max = arr[i];
+                maxIndex = i;
+                minIndex = i;
+            }
+        }
+        System.out.println(iMin + " " + iMax);
+    }
+}
