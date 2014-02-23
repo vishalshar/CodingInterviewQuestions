@@ -10,8 +10,8 @@
  * A plate may or may not be in the solution.
  * 
  *
+ * Solution uses brute force
  */
-package javaapplication;
 
 import java.math.BigInteger;
 
