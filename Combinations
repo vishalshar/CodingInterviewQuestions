@@ -1,0 +1,19 @@
+/**
+* Code to generate all the combination of a given string
+*
+*/
+
+public class CombinationOfN 
+{
+    public static void main(String args[])
+    {
+        combination("","abc");
+    }
+    public static void combination(String prefix, String s)
+    {
+        System.out.println(prefix);
+        int n = s.length();
+        for(int i=0;i<n;i++)
+            combination(prefix+s.charAt(i),s.substring(0,i)+s.substring(i+1,n));
+    }
+}
