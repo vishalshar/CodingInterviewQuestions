@@ -5,7 +5,6 @@
 * is 8 and the values of different pieces are given as following, then the 
 * maximum obtainable value is 22
 * 
-* 
  */
 package javaapplication.DynamicProgramming;
 
