@@ -1,0 +1,31 @@
+/**
+* Code to check if a number is a palindrome
+* 
+**/
+
+public class CheckPalindrome 
+{
+    public static void main(String args[])
+    {
+        int num = 12210;
+        int p = Palindrom(num);
+        
+        if(p==num)
+            System.out.println("True");
+        else
+            System.out.println("False");
+    }
+
+    public static int Palindrom(int num) {
+        if(num==0)
+            return 0 ;
+        int x = 0;
+        while(num>0)
+        {
+            int temp = num%10;
+            num = num /10;
+            x = (x*10)+temp;
+        }
+        return x;
+    }
+}
