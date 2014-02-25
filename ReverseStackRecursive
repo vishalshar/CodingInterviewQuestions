@@ -1,0 +1,28 @@
+
+/**
+* Reverse a stack in place
+**/
+
+public static void reverseStack(Stack<Integer> stk) {
+        if (stk.size() == 0) {
+            return;
+        }
+        int last = getLast(stk);
+        reverseStack(stk);
+        stk.push(last);
+    }
+
+    public static int getLast(Stack<Integer> stk) {
+        int last = 0;
+
+        if (stk.size() == 1) {
+            return stk.pop();
+        }
+        int x;
+        if (!stk.isEmpty()) {
+            x = stk.pop();
+            last = getLast(stk);
+            stk.push(x);
+        }
+        return last;
+    }
