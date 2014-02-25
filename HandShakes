@@ -1,0 +1,20 @@
+/**
+* In a party of N people, each person will shake her/his hand with each other 
+* person only once. On total how many hand-shakes would happen?
+**/
+
+public class HandShakes 
+{
+    public static void main(String args[])
+    {
+        System.out.println(numOfHandShake(100));
+    }
+    public static int numOfHandShake(int num)
+    {
+        if(num ==0)
+            return 0;
+        if(num ==1)
+            return 0;
+        return (num-1)+numOfHandShake(num-1);
+    }
+}
