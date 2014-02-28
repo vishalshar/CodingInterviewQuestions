@@ -29,6 +29,7 @@ public class MaximumProfit {
         int iMax = arr[0];
         int tempMax = 0;
         int maxIndex = 0;
+        int temp = 10;
 
         for (int i = 1; i < arr.length; i++) {
             if ((max-min) < (arr[i]-min) && minIndex < i) {
