@@ -1,0 +1,23 @@
+ //code to build a Binary heap
+ 
+    public void insert(int x)
+    {
+        list.add(x);
+        checkInsert(list.size()-1);
+    }
+
+    private void checkInsert(int i) 
+    {
+        if(i==1)
+            return;
+        int parent = i/2;
+        // min heap
+        if(list.get(parent) > list.get(i))
+        {
+            int temp = list.get(i);
+            list.set(i, list.get(parent));
+            list.set(parent, temp);
+            checkInsert(parent);
+        }
+        return;
+    }
