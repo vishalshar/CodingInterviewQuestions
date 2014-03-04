@@ -1,0 +1,26 @@
+public static void main(String args[])
+    {
+        String s1 = "abc";
+        String s2 = "abc";
+        
+        // prints yes
+        if(s1==s2)
+        {
+            System.out.println("Yes");
+        }
+        s1 = new String("abc");
+        s2 = new String("abc");
+        
+        // doesnt print
+        if(s1==s2)
+        {
+            System.out.println("Yes");
+        }
+        
+        s1 = s2;
+        // prints yes
+        if(s1==s2)
+        {
+            System.out.println("Yes");
+        }
+    }
