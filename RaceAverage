@@ -1,0 +1,118 @@
+/**
+There is a sailboat race from Rhode Island to Bermuda. It takes several days. Take a list of the times when the competitors crossed the finish line and convert that into the average number of minutes to complete the race.
+
+The race starts on day 1 at 8:00 AM.
+
+We are given a list of finish times as a string, where each finish time is formatted as
+
+hh:mm xM, DAY n
+where hh is exactly 2 digits giving the hour, mm is exactly 2 digits giving the minute, x is either 'A' or 'P', and n is a positive integer less than 100 with no leading zeros. So each string has exactly 15 or 16 characters (depending on whether n is less than 10).
+
+Create a class RaceAverage containing a method avgMinutes that is given a list of strings, times, and that returns the average number of minutes taken by the competitors to complete the race. Round the returned value to the nearest minute, with .5 rounding up.
+
+Notes
+
+"12:00 AM, DAY d" refers to midnight between DAY d-1 and DAY d
+
+"12:00 PM, DAY d" refers to noon on DAY d
+
+Constraints
+
+times contains between 1 and 50 elements inclusive
+
+each element of times is formatted as specified above, with hh between 01 and 12 inclusive, mm between 00 and 59 inclusive, and d between 1 and 99 inclusive
+
+each element of times represents a time later than the start of the race.
+
+Examples
+
+Input:
+
+["12:00 PM, DAY 1",
+ "12:01 PM, DAY 1"]
+
+Output:
+
+241
+
+**/
+
+import java.io.IOException;
+import java.util.Scanner;
+
+/**
+ *
+ * @author vishal
+ */
+public class RaceAverage {
+
+    public static void main(String arg[]) throws IOException {
+
+        int times = 3;
+        String[] test = new String[times];
+        test[0] = "02:00 PM, Day 19";
+        test[1] = "02:00 PM, Day 20";
+        test[2] = "01:58 PM, Day 20";
+        System.out.println(avgMinutes(test, times));
+    }
+
+    public static int avgMinutes(String[] input, int times) {
+
+        boolean aORp = false;
+        int arr[] = new int[times];
+        for (int i = 0; i < input.length; i++) {
+            String temp[] = input[i].split(" ");
+            int hh = Integer.parseInt(temp[0].substring(0, 2));
+            int mm = Integer.parseInt(temp[0].substring(3, 5));
+
+            if (temp[1].equals("PM,")) {
+                aORp = true;
+            }
+
+            int day = Integer.parseInt(temp[3]);
+            arr[i] = convertToMinutes(hh, mm, day, aORp);
+        }
+        double avg = 0.0;
+
+        for (int i = 0; i < arr.length; i++) {
+            avg += arr[i];
+        }
+        return (int) Math.round(avg / times);
+    }
+
+    /**
+     * true aORp represnts pm false aORp represents am
+     */
+    public static int convertToMinutes(int hh, int mm, int day, boolean aORp) {
+        //System.out.println(hh+" "+mm+" "+day+" "+aORp);
+
+        int arr[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24};
+        int totalHr = 0;
+        int totalMin = 0;
+
+        if (day == 1) {
+            if (aORp) {
+                totalHr = hh - 8;
+            } else {
+                totalHr = hh + 4;
+            }
+
+            totalMin = (totalHr * 60) + mm;
+        } else {
+            totalHr = 24 * (day - 2) + 16;
+
+            int hours;
+            if (aORp) {
+                hours = arr[hh + 12];
+            } else if (hh == 12) {
+                hours = 0;
+            } else {
+                hours = arr[hh + 1];
+            }
+            totalHr += hours;
+
+            totalMin = (totalHr * 60) + mm;
+        }
+        return totalMin;
+    }
+}
