@@ -1,0 +1,71 @@
+/**
+
+Each element of text is a line of prose from some passage. 
+You will return a string that is read downward, as opposed 
+to left-to-right. That is, the first element of text will 
+correspond to the first "column" of the returned string, 
+and so forth.
+
+Input:
+
+["AAA",
+ "BBB",
+ "CCC"]
+
+Output:
+
+["ABC", "ABC", "ABC"]
+
+So, rows of the input become columns of the output.
+
+**/
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+/**
+ *
+ * @author vishal
+ * 
+ * Assuming input is in single line
+ * and output to be produced is in single line
+ * 
+ */
+public class TextBlocking {
+
+    public static void main(String arg[]) throws IOException {
+        Scanner fileScanner = new Scanner(System.in);
+
+        String temp = fileScanner.nextLine();
+        String input[] = temp.split(",");
+
+        input[0] = input[0].replace("[", "");
+        input[(input.length - 1)] = input[(input.length - 1)].replace("]", "");
+
+        for (int i = 0; i < input.length; i++) {
+            input[i] = input[i].replaceAll("\"", "");
+        }
+
+        String out = textBlocking(input);
+        out = out.substring(0, out.length() - 1);
+        System.out.println("[" + out + "]");
+
+    }
+
+    public static String textBlocking(String[] input) {
+        String output = "";
+        int n = input[0].length();
+        for (int k = 0; k < n; k++) {
+            String temp = "";
+            for (int j = 0; j < input.length; j++) {
+                char x = input[j].charAt(k);
+                temp += x;
+            }
+            output += "\"" + temp + "\",";
+        }
+        return output;
+    }
+}
