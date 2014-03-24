@@ -1,9 +1,18 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-package javaapplication.DynamicProgramming;
+/**
+ *
+ * Given a desired weight, n , how many plate combinations are there for n weight using 
+ * 1lb,4lb,9lb,24lb ? There are 322 weight plate combinations for 100 lbs.
+ * 
+ * Task is, given a number n find out how many ways there are to combine plates to reach 
+ * EXACTLY n using 1 , 4 , 9, 24 lb plates.
 
+ * For example, for 100 of the combination is 2*24 + 5*4 + 3*9 + 5*1.
+ * A plate may or may not be in the solution.
+ * 
+ *
+ * Solution uses Dynamic programming
+ */
+ 
 /**
  *
  * @author vishal
