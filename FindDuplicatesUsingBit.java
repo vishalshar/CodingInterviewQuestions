@@ -1,8 +1,3 @@
-/*
- * Code to find if a string has unique characters using bit shift
- * Assuming String only contains all lowercase characters
- */
-package javaapplication;
 
 /**
  *
